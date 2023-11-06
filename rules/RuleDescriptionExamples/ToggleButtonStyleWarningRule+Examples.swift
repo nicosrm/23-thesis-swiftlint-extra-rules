@@ -116,6 +116,18 @@ extension ToggleButtonStyleWarningRule {
             Example(
                 """
                 struct MyView: View {
+                    private let foregroundColor = Color.black
+                    var body: some View {
+                        ↓Button("hello", action: {})
+                            .foregroundColor(foregroundColor)
+                            .background(.white)
+                    }
+                }
+                """
+            ),
+            Example(
+                """
+                struct MyView: View {
                     var body: some View {
                         ↓Button("hello", action: {})
                             .foregroundColor(.black)
@@ -221,6 +233,48 @@ extension ToggleButtonStyleWarningRule {
                         }
                         .background(.white)
                         .foregroundColor(.black)
+                    }
+                }
+                """
+            ),
+            Example(
+                """
+                struct MyView: View {
+                    private let foregroundColor = Color.black
+                    private let backgroundColor = Color.white
+                    var body: some View {
+                        ↓Button("hello", action: {})
+                            .foregroundColor(foregroundColor)
+                            .background(content: { backgroundColor })
+                    }
+                }
+                """
+            ),
+            Example(
+                """
+                struct MyView: View {
+                    private let foregroundColor = Color.black
+                    private let backgroundColor = Color.white
+                    var body: some View {
+                        ↓Button("hello", action: {})
+                            .foregroundColor(foregroundColor)
+                            .background(backgroundColor)
+                    }
+                }
+                """
+            ),
+            Example(
+                """
+                struct MyView: View {
+                    private let foregroundColor = Color.black
+                    private let backgroundColor = Color.white
+                    var body: some View {
+                        ↓VStack {
+                            Button("hello", action: {})
+                            Button("hello", action: {})
+                        }
+                        .background(backgroundColor)
+                        .foregroundColor(foregroundColor)
                     }
                 }
                 """
