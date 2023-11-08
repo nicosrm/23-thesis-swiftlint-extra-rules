@@ -113,6 +113,20 @@ extension FeedbackSoundRule {
                     }
                 }
                 """
+            ),
+            Example(
+                """
+                struct MyView: View {
+                    private let action: () -> ()
+                    var body: some View {
+                        ↓Text("Hello World")
+                            .onTapGesture(
+                                count: 1,
+                                perform: action
+                            )
+                    }
+                }
+                """
             )
         ]
     }
